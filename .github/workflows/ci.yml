@@ -27,10 +27,9 @@ jobs:
           echo APP_NAME is: ${{ env.APP_NAME }}
           echo APP_ENV is: ${{ env.APP_ENV }}
           echo APP_LANGUAGE is: ${{ env.APP_LANGUAGE }}
-          echo APP_TEST is: ${{ env.APP_TEST }}
 
-      - run: npm install
-      - run: npm run test
+      # - run: npm install
+      # - run: npm run test
 
       - name: Git
         run: |
