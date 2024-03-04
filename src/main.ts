@@ -25,5 +25,7 @@ async function bootstrap() {
   logger.log(`==========================================================`);
   logger.log(`Http Server running on ${await app.getUrl()}`, 'NestApplication');
   logger.log(`==========================================================`);
+
+  // 변경사항
 }
 bootstrap();
