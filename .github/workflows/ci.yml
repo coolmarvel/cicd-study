@@ -24,10 +24,10 @@ jobs:
 
       - name: Setting .env
         run: |
-          echo "APP_NAME=${{ secrets.APP_NAME }} >> .env"
-          echo "APP_ENV=${{ secrets.APP_ENV }} >> .env"
-          echo "APP_LANGUAGE=${{ secrets.APP_LANGUAGE }} >> .env"
-          cat .env
+          echo APP_NAME is: ${{ env.APP_NAME }}
+          echo APP_ENV is: ${{ env.APP_ENV }}
+          echo APP_LANGUAGE is: ${{ env.APP_LANGUAGE }}
+          echo APP_TEST is: ${{ env.APP_TEST }}
 
       - run: npm install
       - run: npm run test
