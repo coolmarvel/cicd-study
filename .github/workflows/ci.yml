@@ -16,9 +16,21 @@ jobs:
         run: |
           echo "::set-output name=short_sha::$(git rev-parse --short HEAD)"
 
-      - name: Get latest version
-        id: version
-        uses: martinbeentjes/npm-get-version-action@main
+      - name: Nodejs 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.11.0
+          cache: 'npm'
+
+      - name: Setting .env
+        run: |
+          echo "APP_NAME=${{ secrets.APP_NAME }} >> .env"
+          echo "APP_ENV=${{ secrets.APP_ENV }} >> .env"
+          echo "APP_LANGUAGE=${{ secrets.APP_LANGUAGE }} >> .env"
+          cat .env
+
+      - run: npm install
+      - run: npm run test
 
       - name: Git
         run: |
