@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestApplication } from '@nestjs/core';
-import { ENUM_APP_ENVIRONMENT } from './app/constnat/app.enum.constant';
+import { ENUM_APP_ENVIRONMENT } from './app/constant/app.enum.constant';
 import { DocumentBuilder, SwaggerCustomOptions, SwaggerModule } from '@nestjs/swagger';
 
 export default async function (app: NestApplication) {
