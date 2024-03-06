@@ -26,7 +26,22 @@ export default async function (app: NestApplication) {
       .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'refreshToken')
       .addApiKey({ type: 'apiKey', in: 'header', name: 'x-api-key' }, 'apiKey')
       .build();
-    const customeOptions: SwaggerCustomOptions = { swaggerOptions: { persistAuthorization: true }, explorer: true, customSiteTitle: swaggerTitle };
+    const customeOptions: SwaggerCustomOptions = {
+      swaggerOptions: {
+        docExpansion: 'none',
+        persistAuthorization: true,
+        displayOperationId: true,
+        operationsSorter: 'method',
+        tagsSorter: 'alpha',
+        tryItOutEnabled: true,
+        filter: true,
+        deepLinking: true,
+      },
+      explorer: true,
+      customSiteTitle: swaggerTitle,
+      jsonDocumentUrl: `${swaggerPrefix}/json`,
+      yamlDocumentUrl: `${swaggerPrefix}/yaml`,
+    };
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup(swaggerPrefix, app, document, customeOptions);
 

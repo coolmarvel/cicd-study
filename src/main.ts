@@ -18,6 +18,8 @@ async function bootstrap() {
   const version: string = configService.get<string>('app.versioning.version');
   const versioningPrefix: string = configService.get<string>('app.versioning.prefix');
 
+  const databaseUri: string = configService.get<string>('database.host');
+
   const httpEnable: boolean = configService.get<boolean>('app.http.enable');
   const versionEnable: string = configService.get<string>('app.versioning.enable');
 
@@ -41,7 +43,7 @@ async function bootstrap() {
 
   logger.log(`Environment Variable`, 'NestApplication');
   // logger.log(JSON.parse(JSON.stringify(process.env)), 'NestApplication');
-  
+
   logger.log(`==========================================================`);
 
   logger.log(`Job is ${jobEnable}`, 'NestApplication');
@@ -49,6 +51,8 @@ async function bootstrap() {
   logger.log(`Http versioning is ${versionEnable}`, 'NestApplication');
 
   logger.log(`Http Server running on ${await app.getUrl()}`, 'NestApplication');
+
+  logger.log(`Database uri ${databaseUri}`, 'NestApplication');
 
   logger.log(`==========================================================`);
 }
