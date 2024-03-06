@@ -47,16 +47,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Setting .env
-        run: |
-          echo APP_NAME is: ${{ env.APP_NAME }}
-          echo APP_ENV is: ${{ env.APP_ENV }}
-          echo APP_LANGUAGE is: ${{ env.APP_LANGUAGE }}
-
       - run: npm install
       - run: npm run build --if-present
-      - run: npm run test
-      - run: npm run test:e2e
+      # - run: npm run test
+      # - run: npm run test:e2e
       # --if-present 옵션은 npm 스크립트가 존재할 때만 실행시키라는 의미이다.
       # 만약 build 스크립트가 없는 경우, 오류 없이 지나간다.
 

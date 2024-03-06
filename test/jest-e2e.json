@@ -1,15 +1,16 @@
 {
-  "rootDir": ".",
+  "rootDir": "../",
 
+  "modulePaths": ["."],
   "moduleFileExtensions": ["js", "json", "ts"],
-  "moduleNameMapper": {
-    "^src/(.*)$": "<rootDir>/../src/$1"
-  },
+  "moduleNameMapper": { "^src/(.*)$": "<rootDir>/../src/$1" },
 
-  "transform": {
-    "^.+\\.(t|j)s$": "ts-jest"
-  },
-  
+  "transform": { "^.+\\.(t|j)s$": "ts-jest" },
+
+  "testTimeout": 10000,
   "testEnvironment": "node",
-  "testRegex": ".e2e-spec.ts$"
+  "testMatch": ["<rootDir>/test/e2e/api-key/*.e2e-spec.ts", "<rootDir>/test/e2e/setting/*.e2e-spec.ts"],
+
+  "collectCoverage": true,
+  "collectCoverageFrom": ["./src/common/api-key/controllers/**", "./src/common/setting/controllers/**", "./src/modules/**/controllers/**"]
 }
