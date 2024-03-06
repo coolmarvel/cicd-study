@@ -13,12 +13,11 @@ import { PaginationModule } from './pagination/pagination.module';
 import { PolicyModule } from './policy/policy.module';
 import { RequestModule } from './request/request.module';
 import { ResponseModule } from './response/response.module';
-import swaggerConfig from 'src/config/swagger.config';
-import appConfig from 'src/config/app.config';
+import configs from 'src/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ load: [appConfig, swaggerConfig], isGlobal: true, cache: true, envFilePath: ['.env'], expandVariables: true }),
+    ConfigModule.forRoot({ load: configs, isGlobal: true, cache: true, envFilePath: ['.env'], expandVariables: true }),
     LoggerModule,
     ApiKeyModule,
     AuthModule,
