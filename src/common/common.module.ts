@@ -54,7 +54,7 @@ import { DebuggerLoggerModule } from 'src/common/debugger/debugger.logger.module
         JOB_ENABLE: Joi.boolean().default(false).required(),
 
         DATABASE_HOST: Joi.string().default('mongodb://localhost:27017').required(),
-        DATABASE_NAME: Joi.string().default('ack').required(),
+        DATABASE_NAME: Joi.string().default('boilerplate').required(),
         DATABASE_USER: Joi.string().allow(null, '').optional(),
         DATABASE_PASSWORD: Joi.string().allow(null, '').optional(),
         DATABASE_DEBUG: Joi.boolean().default(false).required(),
