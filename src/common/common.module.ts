@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { LoggerModule } from './logger/logger.module';
 import swaggerConfig from 'src/config/swagger.config';
+import appConfig from 'src/config/app.config';
 
 @Module({
-  imports: [ConfigModule.forRoot({ load: [swaggerConfig], isGlobal: true, cache: true, envFilePath: ['.env'], expandVariables: true }), LoggerModule],
+  imports: [ConfigModule.forRoot({ load: [appConfig, swaggerConfig], isGlobal: true, cache: true, envFilePath: ['.env'], expandVariables: true }), LoggerModule],
 })
 export class CommonModule {}
