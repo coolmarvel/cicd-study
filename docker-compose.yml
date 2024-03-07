@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mongo1:
+    container_name: mongo1
+    image: mongo
+    hostname: mongo1
+    ports:
+      - 30001:27017
+    restart: always
+    networks:
+      - ci-cd
+    volumes:
+      - dbdata1:/data/db
+      - ./mongodb.key:/etc/mongodb.key
+    command: 'mongod --bind_ip_all --replSet rs0 --keyFile /etc/mongodb.key'
+
+  mongo2:
+    container_name: mongo2
+    image: mongo
+    hostname: mongo2
+    ports:
+      - 30002:27017
+    restart: always
+    networks:
+      - ci-cd
+    volumes:
+      - dbdata2:/data/db
+      - ./mongodb.key:/etc/mongodb.key
+    command: 'mongod --bind_ip_all --replSet rs0 --keyFile /etc/mongodb.key'
+
+  mongo3:
+    container_name: mongo3
+    image: mongo
+    hostname: mongo3
+    ports:
+      - 30003:27017
+    restart: always
+    networks:
+      - ci-cd
+    volumes:
+      - dbdata3:/data/db
+      - ./mongodb.key:/etc/mongodb.key
+    command: 'mongod --bind_ip_all --replSet rs0 --keyFile /etc/mongodb.key'
+
+volumes:
+  dbdata1:
+  dbdata2:
+  dbdata3:
+
+networks:
+  ci-cd:
+    name: ci-cd
+    driver: bridge
